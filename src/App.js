@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Home from './Component/Home';
+import About from './Component/About';
+import Contact from './Component/Contact';
+import ClassComponentExample from './Component/ClassComponent';
+import FunctionComponentExample from './Component/FunctionComponent';
+import DarkModeContextProvider from './Context/DarkMode';
+import FormValidation from './Component/FormValidation';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/class-component">Class</Link>
+          </li>
+          <li>
+            <Link to="/function-component">Function</Link>
+          </li>
+          <li>
+            <Link to="/form-validation">Form</Link>
+          </li>
+        </ul>
+      </nav>
+    <DarkModeContextProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/class-component" element={<ClassComponentExample />} />
+        <Route path="/function-component" element={<FunctionComponentExample />} />
+        <Route path="/form-validation" element={<FormValidation />} />
+      </Routes>
+    </DarkModeContextProvider>
+    </Router>
   );
-}
+};
 
 export default App;
